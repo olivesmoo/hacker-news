@@ -2,7 +2,7 @@
 
 ## Description
 
-Project to learn about Python web application development. Currently hosted at: [olivia.meidynasty.com](https://olivia.meidynasty.com). Features the top posts from Hacker News and allows users to login through Auth0 to like/dislike these posts. It also has an Admin view which allows the deletion of users and posts.
+Project to learn about Python web application development. Originally hosted at: [olivia.meidynasty.com](https://olivia.meidynasty.com), but the server is no longer running. A demo video of the app can be found at [this link](https://drive.google.com/file/d/1el8H_lsGaPh-TujUrk1Twk7KBGlY5GHO/view?usp=sharing). Features the top posts from Hacker News and allows users to login through Auth0 to like/dislike these posts. It also has an Admin view which allows the deletion of users and posts.
 
 ## Table of Contents
 
