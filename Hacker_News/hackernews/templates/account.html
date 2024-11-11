@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h1>Profile</h1> 
+    <div class="content-section">
+       <div class="media">
+          <img class="rounded-circle account-img" src="{{session.get('user').userinfo.picture}}" alt="Picture">
+       </div>
+       <div class="media-body>
+          <h2 class="account-heading">{{session.get('user').userinfo.name}}</h2>
+          <p class="text-secondary">{{session.get('user').userinfo.email}}</p>
+       </div>
+
+    </div>
+{% endblock content %}
+

@@ -1,0 +1,1 @@
+0 * * * * /home/olives/Hacker_News/venv/bin/python /home/olives/Hacker_News/data.py

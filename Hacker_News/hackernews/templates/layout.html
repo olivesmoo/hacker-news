@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {% if title %}
+        <title>Hacker News - {{ title }}</title>
+    {% else %}
+        <title>Hacker News</title>
+    {% endif %}
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!--<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css')}}"
+
+</head>
+<body>
+    <header class="site-header">
+      <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+        <div class="container">
+          <a class="navbar-brand me-4" href="/">News Feed</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarToggle">
+            <div class="navbar-nav mb-auto">
+              <a class="nav-item nav-link" href="/">Home</a>
+              <a class="nav-item nav-link" href="/about">About</a>
+            </div>
+            <!-- Navbar Right Side -->
+            <div class="navbar-nav ms-auto">
+	      {% if session %}
+	      	<a class="nav-item nav-link" href="/account">Account</a>
+		{%if 'roles' in session and 'admin' in session['roles']%}
+		   <li class="nav-item dropdown">
+			   <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+				Admin
+			   </a>
+			   <ul class="dropdown-menu">
+            		      <li><a class="dropdown-item" href="/admin_user">User Dashboard</a></li>
+                              <li><a class="dropdown-item" href="/admin_post">Post Dashboard</a></li>
+                           </ul>
+
+		   </li>
+                {% endif %}
+	      	<a class="nav-item nav-link" href="/logout">Logout</a>
+              {% else %}		
+	      	<a class="nav-item nav-link" href="/login">Login</a>
+	      {% endif %}
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main role="main" class="container">
+      <div class="row">
+        <div class="col-md-8">
+          {% block content %}{% endblock %}
+        </div>
+        <div class="col-md-4">
+          <div class="content-section">
+            <h3>Resources</h3>
+            <p class='text-muted'>Links to resources used in this project
+              <ul class="list-group">
+		<li class="list-group-item list-group-item-light"><a href="https://hackernews.api-docs.io/v0/overview/introduction">Hacker News API</a></li>
+		<li class="list-group-item list-group-item-light"><a href="https://gitlab.com/cop45219484040/hacker-news">GitLab</a></li>
+		<li class="list-group-item list-group-item-light"><a href="https://observatory.mozilla.org/analyze/olivia.meidynasty.com">Mozilla Observatory</a></li>
+		{% if session %}
+			<li class="list-group-item list-group-item-light"><a href="/get_admin">Get Admin Role</a></li>
+		{% endif %}
+
+              </ul>
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>-->
+    <script type="text/javascript" src="{{url_for('static', filename='index.js')}}"></script>
+</body>
+</html>
